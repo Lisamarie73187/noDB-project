@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 app.post('/api/app', ctr.create)
-app.get('/api/app', ctr.readNews)
+app.get('/api/news', ctr.readNews)
 
 
 const PORT = 3535;
