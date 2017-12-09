@@ -14,7 +14,7 @@ class GroceryList extends Component {
             this.setState({userInput: val})
         }
         addToList(){
-            axios.post('http://localhost:3535/api/app',{input: this.state.userInput})
+            axios.post('http://localhost:3535/api/app',{groceryItem: this.state.userInput})
             .then(res => {
                 console.log(res)
                 this.setState({ list: res.data, userInput: ''})
@@ -30,7 +30,7 @@ class GroceryList extends Component {
            })
                return(
                    <div>
-                       <input value = {this.state.userInput} placeholder='new to do' onChange ={(e) => {this.userInput(e.target.value)}}></input>
+                       <input value = {this.state.userInput} placeholder='New Item' onChange ={(e) => {this.userInput(e.target.value)}}></input>
                        <button onClick = {(e) => {this.addToList(e.target.value)}}>Add</button>
                        <div>{listToDisplay}</div>
                    </div>

@@ -19,7 +19,7 @@ class News extends Component {
 
     render(){
         
-        let mapListSlice = this.state.newsList.slice(0,5).map((e,i) => {
+        let mapListSlice = this.state.newsList.slice(0,3).map((e,i) => {
             console.log(e)
             return <div key= {i}>
             <h2>{e.abstract}</h2>

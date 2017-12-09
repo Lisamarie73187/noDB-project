@@ -3,6 +3,7 @@ require('dotenv').config()
 const axios = require('axios')
 
 let list = [];
+let groceryList = [];
 
 module.exports = {
     create: ( req, res ) => {
@@ -10,6 +11,13 @@ module.exports = {
         list.push(input);
         res.status(200).json(list)
     },
+
+    create: (req, res)  => {
+        const{groceryItem} = req.body
+        groceryList.push(groceryItem);
+        res.status(200).json(groceryList)
+    },
+
 
     readNews:( req, res )=> {
         console.log('working?')
