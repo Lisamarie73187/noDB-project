@@ -10,7 +10,7 @@ class News extends Component {
         }
     }
     componentDidMount(){
-        axios.get('http://localhost:3535/api/news').then( res => {
+        axios.get('http://localhost:3000/api/news').then( res => {
             console.log(res)
             this.setState({ newsList: res.data})
         })
