@@ -24,11 +24,14 @@ class ToDoList extends Component {
 
   handleAddTask() {
       let newTask = {
-        task: [this.state.input]
+        task: [...this.state.input]
       }
       axios.post(`http://localhost:3000/api/app/todo`, newTask).then( resp => {
         console.log(resp.data)
-        this.setState({task:resp.data })
+        this.setState({
+          task:[...resp.data],
+          input: '' 
+        })
       }).catch(console.log)
 
       // this.setState({
@@ -40,7 +43,9 @@ class ToDoList extends Component {
   
 
   render() {
-  
+    var listedArray = this.state.task.map((element,index)=>{
+      return <li key={index}>{element}</li>
+    })
 
     return (
       <div className="App">
@@ -53,7 +58,7 @@ class ToDoList extends Component {
            />
 
            <button onClick={ this.handleAddTask }>Add</button>
-       <h2>{this.state.task}</h2>
+       {listedArray}
           </div>
         </div>
 

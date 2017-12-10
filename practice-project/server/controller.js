@@ -10,7 +10,7 @@ module.exports = {
         console.log('hello')
         const { task } = req.body;
         list.push(task);
-        res.status(200).json([list]);
+        res.status(200).json(list);
       },
 
     readNews:( req, res )=> {
