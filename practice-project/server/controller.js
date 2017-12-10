@@ -7,17 +7,12 @@ let groceryList = [];
 
 module.exports = {
     create: ( req, res ) => {
-        const {input} = req.body
-        list.push(input);
-        res.status(200).json(list)
-    },
-
-    create: (req, res)  => {
-        const{groceryItem} = req.body
-        groceryList.push(groceryItem);
-        res.status(200).json(groceryList)
-    },
-
+        const { text} = req.body;
+        list.push({ id, text});
+        id++;
+        res.status(200).send( list );
+      },
+  
 
     readNews:( req, res )=> {
         console.log('working?')

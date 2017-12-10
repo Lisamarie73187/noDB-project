@@ -6,15 +6,18 @@ class GroceryList extends Component {
         constructor(){
            super()
            this.state = {
-               list: [],
+               groceryList: [],
                userInput: ''
-           }
+           };
+        //    this.addToList = this.addToList(this)
+        //    this.handleChange = this.handleChange(this)
         }
-        userInput(val){
-            this.setState({userInput: val})
+        handleChange(value){
+            this.setState({userInput: value})
         }
         addToList(){
-            axios.post('http://localhost:3535/api/app',{groceryItem: this.state.userInput})
+           
+            axios.post('http://localhost:3535/api/app/grocerylist', newItem)
             .then(res => {
                 console.log(res)
                 this.setState({ list: res.data, userInput: ''})
@@ -24,15 +27,16 @@ class GroceryList extends Component {
        
        
            render(){
-               let listToDisplay = this.state.list.map((e,i) => {
-                   return ( <h2 key={i}>{e}</h2>
-               )
+               let listDisplay = this.state.groceryList.map((e,i) => {
+                   return ( <h2 key={i}>{e}</h2>)
            })
                return(
                    <div>
-                       <input value = {this.state.userInput} placeholder='New Item' onChange ={(e) => {this.userInput(e.target.value)}}></input>
-                       <button onClick = {(e) => {this.addToList(e.target.value)}}>Add</button>
-                       <div>{listToDisplay}</div>
+                       <input value={this.state.userInput} placeholder='New Item' onChange={(e) => {this.handleChange(e.target.value)}}></input>
+                       <button onClick = {this.addToList}>Add</button>
+                       {console.log(listDisplay)}
+
+                       <div>{listDisplay}</div>
                    </div>
        
                )
