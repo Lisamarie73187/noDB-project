@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import '../App.css';
 // import Todo from './Todo';
 
+import DisplayList from './DisplayList'
+
 import axios from 'axios';
 
 class ToDoList extends Component {
@@ -34,18 +36,14 @@ class ToDoList extends Component {
         })
       }).catch(console.log)
 
-      // this.setState({
-      //   list: [...this.state.list, this.state.input ], 
-      //   input: '' 
-    //   })
     };
 
   
 
   render() {
-    var listedArray = this.state.task.map((element,index)=>{
-      return <li key={index}>{element}</li>
-    })
+    // var listedArray = this.state.task.map((element,index)=>{
+    //   return <h4 key={index}><input type="checkbox"/>{element}<a href="">[x]</a></h4>
+    // })
 
     return (
       <div className="App">
@@ -58,7 +56,7 @@ class ToDoList extends Component {
            />
 
            <button onClick={ this.handleAddTask }>Add</button>
-       {listedArray}
+           <DisplayList task={this.state.task}/>
           </div>
         </div>
 
