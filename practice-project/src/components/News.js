@@ -17,18 +17,25 @@ class News extends Component {
     }
 
 
+
+
     render(){
         
         let mapListSlice = this.state.newsList.slice(0,3).map((e,i) => {
-            return <div key= {i}>
-            <h2>{e.abstract}</h2>
-            {e.multimedia[0]? <img src={e.multimedia[0].url} alt="headlines"/> : null }
-            <a href={e.short_url}>Read More</a>
-            <div></div>
+            return <div className="border" ><div className="imageAndHeadline">
+                <div className="mappedNews" key= {i}>
+            <span className="headline">{e.abstract}</span>
+            <div className="image">{e.multimedia[0]? <img src={e.multimedia[0].url} alt="headlines"/> : null }</div>
+            </div>
+            <a className="link" href={e.short_url}>Read More</a>
+            </div>
             </div>
         })
         return(
-            <div>{mapListSlice}</div>
+            <div>
+            <h1>What's in the News?</h1>
+            <div className="newsArray">{mapListSlice}</div>
+            </div>
 
         )
     }

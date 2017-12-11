@@ -61,15 +61,15 @@ class ToDoList extends Component {
       
     return (
       <div className="App">
-        <h1>My to-do list:</h1>
+        <h1>My To-Do List:</h1>
 
          <div>
-           <input value={this.state.input} 
-                  placeholder="Enter new task" 
+           <input className="inputTask" value={this.state.input} 
+                  placeholder="What do you need to do?" 
                  onChange={ (e) => this.handleInputChange( e.target.value ) }
            />
 
-           <button onClick={ this.handleAddTask }>Add</button>
+           <button className="addButton" onClick={ this.handleAddTask }>Add</button>
            <DisplayList 
            task={this.state.task}
            handleDelete={this.handleDelete}
