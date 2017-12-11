@@ -11,6 +11,8 @@ app.use(cors());
 
 app.post('/api/app/todo', ctr.create)
 app.get('/api/news', ctr.readNews)
+app.delete('/api/delete/:id', ctr.delete)
+app.put('/api/completed/:id', ctr.updateComplete)
 
 
 const PORT = 3000;

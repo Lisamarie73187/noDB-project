@@ -1,23 +1,22 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
 import '../App.css';
-// import Todo from './Todo';
 
 import DisplayList from './DisplayList'
 
 import axios from 'axios';
 
 class ToDoList extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
-      list: [],
       input: '',
       task: []
     };
 
     this.handleAddTask = this.handleAddTask.bind( this );
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleComplete = this.handleComplete.bind(this);
   }
 
   handleInputChange( value ) {
@@ -26,25 +25,40 @@ class ToDoList extends Component {
 
   handleAddTask() {
       let newTask = {
-        task: [...this.state.input]
+        task: [this.state.input],
       }
-      axios.post(`http://localhost:3000/api/app/todo`, newTask).then( resp => {
+      axios.post(`http://localhost:3000/api/app/todo`, newTask)
+      .then( resp => {
         console.log(resp.data)
         this.setState({
           task:[...resp.data],
           input: '' 
         })
       }).catch(console.log)
+    }
 
-    };
+    handleDelete(id){
+      axios.delete(`http://localhost:3000/api/delete/${id}`)
+      .then(resp => {
+        this.setState ({
+          task: resp.data,
+        })
+      }).catch(console.log)
+    }
+    handleComplete(id){
+      axios.put(`http://localhost:3000/api/completed/${id}`)
+      .then(resp => {
+        this.setState({
+          task: resp.data,
+        })
+      }).catch(console.log)
+    }
+
 
   
 
   render() {
-    // var listedArray = this.state.task.map((element,index)=>{
-    //   return <h4 key={index}><input type="checkbox"/>{element}<a href="">[x]</a></h4>
-    // })
-
+      
     return (
       <div className="App">
         <h1>My to-do list:</h1>
@@ -56,7 +70,10 @@ class ToDoList extends Component {
            />
 
            <button onClick={ this.handleAddTask }>Add</button>
-           <DisplayList task={this.state.task}/>
+           <DisplayList 
+           task={this.state.task}
+           handleDelete={this.handleDelete}
+           handleComplete={this.handleComplete}/>
           </div>
         </div>
 

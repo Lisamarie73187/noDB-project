@@ -9,9 +9,11 @@ class DisplayList extends Component {
         return (
             <div>
                 {this.props.task.map((element,index)=>{
-                return <h4 key={index}>
-                <input type="checkbox"/>{element}
-                <a href="">[x]</a></h4>
+                return <h4 key={index}>{element}
+                <button onClick={()=>{this.props.handleComplete(index)}}>complete</button>
+                <button onClick={()=>{this.props.handleDelete(index)}}>delete</button>
+                </h4>
+              
                 })}
             </div>
 

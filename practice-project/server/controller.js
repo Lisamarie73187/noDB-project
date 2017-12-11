@@ -3,13 +3,13 @@ require('dotenv').config()
 const axios = require('axios')
 
 let list = [];
-let groceryList = [];
+let id = 0;
 
 module.exports = {
     create: ( req, res ) => {
-        console.log('hello')
+        console.log('helloss')
         const { task } = req.body;
-        list.push(task);
+        list.push([task]);
         res.status(200).json(list);
       },
 
@@ -19,5 +19,28 @@ module.exports = {
         .then( resp => { 
             res.status(200).send(resp.data.results)
         }).catch(console.log)
+    },
+
+    delete:(req,res) => {
+        console.log('whyareyounotdeleting?')
+        const { id }= req.params;
+        list.forEach((e,i,a) => {
+            if(i == id){
+                a.splice(i,1)
+            }
+            res.status(200).json( list )
+        })
+        
+    },
+    updateComplete:(req,res) => {
+        console.log('please work')
+        const{ id } = req.params;
+        list.forEach((e,i,a)=>{
+            if(i == id){
+                a[i]+="-complete"
+            }
+            res.status(200).json( list )
+        })
     }
+    
 }
