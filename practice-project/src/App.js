@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
-// import axios from 'axios';
+
 
 import News from './components/News';
 import ToDoList from './components/ToDoList';
+import TechNews from './components/TechNews';
 
 
 
@@ -16,6 +17,8 @@ class App extends Component {
        <ToDoList/><br/>
       <div className="news">
       <News/>
+      <p className="space"/>
+      <TechNews/>
       </div>
       </div>
     );

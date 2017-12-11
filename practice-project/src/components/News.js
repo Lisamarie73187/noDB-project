@@ -16,9 +16,6 @@ class News extends Component {
         })
     }
 
-
-
-
     render(){
         
         let mapListSlice = this.state.newsList.slice(0,3).map((e,i) => {
@@ -34,7 +31,10 @@ class News extends Component {
         return(
             <div>
             <h1>What's in the News?</h1>
+            <div className="wrapper">
+            <h3>The Daily</h3>
             <div className="newsArray">{mapListSlice}</div>
+            </div>
             </div>
 
         )

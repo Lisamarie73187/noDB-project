@@ -61,7 +61,7 @@ class ToDoList extends Component {
       
     return (
       <div className="App">
-        <h1>My To-Do List:</h1>
+        <h1>What do I have to do Today?</h1>
 
          <div>
            <input className="inputTask" value={this.state.input} 

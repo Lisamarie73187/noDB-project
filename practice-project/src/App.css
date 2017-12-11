@@ -20,9 +20,6 @@
 	justify-content: center;
 	align-items: center;
   align-content: space-around;
-  border: 2px solid black;
-  padding: 5px;
-  box-shadow: 4px 10px 56px -8px rgba(0,0,0,0.31);
 }
 
 .border{
@@ -119,5 +116,23 @@ h4{
   color: rgb(119, 119, 119);
   font-family: 'Indie Flower', cursive;
   font-size: 25pt;
+}
+.space{
+  height: 30px;
+
+}
+.wrapper{
+  border: 2px solid black;
+  padding: 5px;
+  box-shadow: 4px 10px 56px -8px rgba(0,0,0,0.31);
+}
+h3{
+  margin: 0;
+  padding: 5px;
+  color: white;
+  background-color: black;
+  font-family: 'Indie Flower', cursive;
+  letter-spacing: 4px;
+  font-size: 20pt;
 }
 

@@ -21,6 +21,7 @@ module.exports = {
         }).catch(console.log)
     },
 
+
     delete:(req,res) => {
         console.log('whyareyounotdeleting?')
         const { id }= req.params;
